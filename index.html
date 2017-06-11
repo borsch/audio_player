@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
+<style>
+    .volume-container {
+        height: 10px;
+        width: 400px;
+        background-color: green;
+    }
+    #volume {
+        height: inherit;
+        background-color: red;
+        width: 20px;
+    }
+</style>
 <body>
     <audio id="audioElement" src="./audio/Johnny Cash - Personal Jesus.mp3"></audio>
     <div>
         <button onclick="play()">Play the Audio</button>
         <button onclick="pause()">Pause the Audio</button>
-        <button onclick="increment()">Increase Volume</button>
-        <button onclick="decrement()">Decrease Volume</button>
+        <button onclick="decrement()">-</button>
+        <button onclick="increment()">+</button>
     </div>
-
+    <div class="volume-container">
+        <div id="volume"></div>
+    </div>
     <svg width="1200" height="700" id="visualizer">
 
     </svg>

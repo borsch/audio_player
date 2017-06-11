@@ -1,8 +1,9 @@
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 var audioElement = document.getElementById('audioElement');
+var volume = document.getElementById('volume');
 var audioSrc = audioCtx.createMediaElementSource(audioElement);
 var analyser = audioCtx.createAnalyser();
-
+volume.style.width = (audioElement.volume * 100 )+ '%';
 // Bind our analyser to the media element source.
 audioSrc.connect(analyser);
 audioSrc.connect(audioCtx.destination);
@@ -48,17 +49,23 @@ renderChart();
 
 
 function play() {
-    document.getElementById('audioElement').play();
+    audioElement.play();
 }
 
 function pause() {
-    document.getElementById('audioElement').pause();
+    audioElement.pause();
 }
 
 function increment() {
-    document.getElementById('audioElement').volume+=0.1;
+	if (audioElement.volume < 1) {
+	    audioElement.volume += 0.1;
+	    volume.style.width = (audioElement.volume * 100 )+ '%';
+	}
 }
 
 function decrement() {
-    document.getElementById('audioElement').volume-=0.1
+	if (audioElement.volume > 0) {
+	    audioElement.volume -= 0.1
+	    volume.style.width = (audioElement.volume * 100 )+ '%';
+	}
 }
