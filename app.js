@@ -22,7 +22,8 @@ for (var i = 0; i < rects_number; ++i) {
     rect.setAttribute('y', svg_height);
     rect.setAttribute('width', rect_width);
     rect.setAttribute('height', 0);
-    rect.setAttribute('x', rect_width * i);
+    rect.setAttribute('x', rect_width * i + i);
+    rect.setAttribute('stroke', 'rgb(0,0,0)');
 
     rects.push(rect);
     visualizer.appendChild(rect);
@@ -41,7 +42,7 @@ function renderChart() {
     rects.forEach(function(rect, i){
         rect.setAttribute('y', svg_height/2 - frequencyData[i]/2);
         rect.setAttribute('height', frequencyData[i]);
-        rect.setAttribute('fill', 'rgb('+i+', '+frequencyData[i]+', '+i+')');
+        rect.setAttribute('fill', 'rgb(200, '+i+', 0)');
     });
 }
 
